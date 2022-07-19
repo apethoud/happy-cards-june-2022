@@ -1,12 +1,4 @@
 import HighlightCard from "./HighlightCard";
-import MovieCard from "./MovieCard";
-
-// Feel free to transform this into an array of movies.
-const movieData = {
-  Title: "The Avengers",
-  Year: "2012",
-  Rated: "PG-13",
-};
 
 export default function Home() {
   return (
@@ -20,8 +12,6 @@ export default function Home() {
         <HighlightCard header="Pick a Design" />
         <HighlightCard header="Let Us Deliver It" />
       </div>
-      {/* Below is an example of how you might start building a movie card. */}
-      <MovieCard title={movieData.Title} />
     </div>
   );
 }
