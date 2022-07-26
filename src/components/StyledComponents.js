@@ -163,6 +163,13 @@ export const HeaderLogo = styled.div`
   `}
 `;
 
+export const HeaderLink = styled.p`
+  margin: 18px 24px;
+  ${({ theme: { theme } }) => `
+    color: ${themes[theme].text};
+  `};
+`;
+
 export const FooterCopyright = styled.div`
   margin-top: 300px;
   padding-bottom: 24px;

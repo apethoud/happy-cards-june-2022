@@ -42,6 +42,11 @@ body {
   width: 60vw;
 }
 
+.Home-CallToActionSection {
+  padding: 120px 0;
+  text-align: center;
+}
+
 /* Card Form */
 
 .CardForm-Wrapper {
