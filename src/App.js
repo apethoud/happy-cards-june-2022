@@ -1,16 +1,12 @@
-import logo from "./logo.svg";
 import "./App.css";
-import Home from "./components/Home";
-import HolidayList from "./components/HolidayList";
-import CardForm from "./components/CardForm";
+import HeaderFooter from "./components/HeaderFooter";
+import CardBuilder from "./components/CardBuilder";
 
 function App() {
   return (
-    <div className="App">
-      {/* <Home /> */}
-      {/* <HolidayList /> */}
-      <CardForm />
-    </div>
+    <HeaderFooter>
+      <CardBuilder />
+    </HeaderFooter>
   );
 }
 
