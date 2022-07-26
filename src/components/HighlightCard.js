@@ -1,9 +1,19 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  HeaderText,
+  HighlightCard as Card,
+  HighlightCardIcon as CardIcon,
+  Text,
+} from "./StyledComponents";
+
 export default function HighlightCard(props) {
-  console.log("props is: ", props);
   return (
-    <div className="HighlightCard">
-      <div>{props.header}</div>
-      <div>Description</div>
-    </div>
+    <Card>
+      <CardIcon>
+        <FontAwesomeIcon icon={props.icon} size="3x" />
+      </CardIcon>
+      <HeaderText style={{ margin: 20 }}>{props.header}</HeaderText>
+      <Text>{props.subtext}</Text>
+    </Card>
   );
 }
