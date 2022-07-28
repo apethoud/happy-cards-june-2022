@@ -1,8 +1,12 @@
 import NavLink from "./NavLink";
 import { HeaderColorBar, HeaderLogo } from "./StyledComponents";
 import ThemeToggle from "./ThemeToggle";
+import { useContext } from "react";
+import { UserContext } from "../contexts/UserContext";
 
 export default function AppHeader() {
+  const { loggedInUser } = useContext(UserContext);
+
   return (
     <>
       <HeaderColorBar />
@@ -12,7 +16,7 @@ export default function AppHeader() {
           <div style={{ display: "flex" }}>
             <NavLink route="/" label="Home" />
             <NavLink route="card-builder" label="Card Builder" />
-            <NavLink route="login" label="Login" />
+            {!loggedInUser && <NavLink route="login" label="Login" />}
           </div>
           <ThemeToggle />
         </div>
