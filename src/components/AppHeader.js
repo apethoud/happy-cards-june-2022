@@ -2,6 +2,12 @@ import { NavLink } from "react-router-dom";
 import { HeaderColorBar, HeaderLogo, HeaderLink } from "./StyledComponents";
 import ThemeToggle from "./ThemeToggle";
 
+function styleByActiveStatus(isActive) {
+  return isActive
+    ? { fontWeight: "bold", textDecoration: "none" }
+    : { fontWeight: "normal", textDecoration: "none" };
+}
+
 export default function AppHeader() {
   return (
     <>
@@ -10,10 +16,16 @@ export default function AppHeader() {
         <HeaderLogo>HappyCards</HeaderLogo>
         <div style={{ display: "flex" }}>
           <div style={{ display: "flex" }}>
-            <NavLink to="/" style={{ textDecoration: "none" }}>
+            <NavLink
+              to="/"
+              style={({ isActive }) => styleByActiveStatus(isActive)}
+            >
               <HeaderLink>Home</HeaderLink>
             </NavLink>
-            <NavLink to="/card-builder" style={{ textDecoration: "none" }}>
+            <NavLink
+              to="/card-builder"
+              style={({ isActive }) => styleByActiveStatus(isActive)}
+            >
               <HeaderLink>Card Builder</HeaderLink>
             </NavLink>
           </div>
