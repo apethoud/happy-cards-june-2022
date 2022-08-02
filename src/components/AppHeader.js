@@ -16,7 +16,11 @@ export default function AppHeader() {
           <div style={{ display: "flex" }}>
             <NavLink route="/" label="Home" />
             <NavLink route="card-builder" label="Card Builder" />
-            {!loggedInUser && <NavLink route="login" label="Login" />}
+            {!loggedInUser ? (
+              <NavLink route="login" label="Login" />
+            ) : (
+              <NavLink route="profile" label="Profile" />
+            )}
           </div>
           <ThemeToggle />
         </div>

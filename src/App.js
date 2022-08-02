@@ -8,6 +8,8 @@ import NotFound from "./components/NotFound";
 import Login from "./components/Login";
 import { UserProvider } from "./contexts/UserContext";
 import AuthChecker from "./components/AuthChecker";
+import Profile from "./components/Profile";
+import SentCard from "./components/SentCard";
 
 function App() {
   return (
@@ -26,6 +28,8 @@ function App() {
                 }
               />
               <Route path="login" element={<Login />} />
+              <Route path="profile" element={<Profile />} />
+              <Route path="sent-card/:cardId" element={<SentCard />} />
               <Route path="*" element={<NotFound />} />
             </Route>
           </Routes>

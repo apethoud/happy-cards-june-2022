@@ -3,13 +3,7 @@ import { Button, HeaderText } from "./StyledComponents";
 import LabeledTextInput from "./LabeledTextInput";
 import { UserContext } from "../contexts/UserContext";
 import { useNavigate } from "react-router-dom";
-
-const validUser = {
-  id: 1,
-  name: "Andrew",
-  email: "andrew@email.com",
-  password: "abc123",
-};
+import { fetchTestUserDataByEmail } from "../api/api";
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -21,9 +15,11 @@ export default function Login() {
 
   function handleSubmit(event) {
     event.preventDefault();
-    if (email === validUser.email && password === validUser.password) {
+    const user = fetchTestUserDataByEmail(email);
+    if (user && password === "abc123") {
+      console.log("user is: ", user);
       setShowLoginError(false);
-      setLoggedInUser(validUser);
+      setLoggedInUser(user);
       navigate("/card-builder");
     } else {
       setShowLoginError(true);
