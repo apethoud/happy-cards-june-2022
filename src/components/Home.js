@@ -11,18 +11,22 @@ import {
   HomeHeroSubheadText,
 } from "./StyledComponents";
 import { Link } from "react-router-dom";
+import useHolidayList from "../hooks/useHolidayList";
 
 export default function Home() {
+  const holidayList = useHolidayList("this_year");
+
   return (
     <div className="Home-Container">
       <div className="Home-HeroSection">
         <HomeHeroHeaderText>
           Send them a smile with HappyCards!
         </HomeHeroHeaderText>
-        <HomeHeroSubheadText>
-          Choose from thousands of uniquely-themed holiday cards for 250+
-          different holidays
-        </HomeHeroSubheadText>
+        {holidayList?.length && (
+          <HomeHeroSubheadText>
+            {`Choose from thousands of uniquely-themed holiday cards for ${holidayList?.length} different holidays`}
+          </HomeHeroSubheadText>
+        )}
       </div>
       <div className="Home-HighlightsSection">
         <HighlightCard

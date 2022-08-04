@@ -14,8 +14,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { faCircleNotch } from "@fortawesome/free-solid-svg-icons";
 import { ThemeContext } from "../contexts/ThemeContext";
-
-const API_KEY = process.env.REACT_APP_HOLIDAYS_API_KEY;
+import useHolidayList from "../hooks/useHolidayList";
 
 export default function HolidayPickerModal({
   isModalOpen,
@@ -24,9 +23,9 @@ export default function HolidayPickerModal({
 }) {
   const [isLoading, setIsLoading] = useState(false);
   const [selectedTimeframe, setSelectedTimeframe] = useState("this_month");
-  const [holidayList, setHolidayList] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const { theme } = useContext(ThemeContext);
+  const holidayList = useHolidayList(selectedTimeframe);
 
   const modalStyles = {
     light: {
@@ -63,25 +62,6 @@ export default function HolidayPickerModal({
       },
     },
   };
-
-  useEffect(() => {
-    async function getHolidays() {
-      setIsLoading(true);
-      let params;
-      if (selectedTimeframe === "this_year") {
-        params = "year=2022";
-      } else {
-        params = "year=2022&month=7";
-      }
-      const url = `https://holidays.abstractapi.com/v1/?api_key=${API_KEY}&country=US&${params}`;
-      const response = await fetch(url);
-      const data = await response.json();
-      console.log(data);
-      setHolidayList(data);
-      setIsLoading(false);
-    }
-    getHolidays();
-  }, [selectedTimeframe]);
 
   useEffect(() => {
     ReactModal.setAppElement("body");
